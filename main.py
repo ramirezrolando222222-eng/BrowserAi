@@ -1,10 +1,10 @@
 """
 Browserx AI: Motherland Nexus
-Main entry point integrating Rox AI and Multi-Model Router
+Main entry point integrating RO AI and Multi-Model Router
 """
 
-from ai.rox_assistant import rox_engine
-from ai.model_router import router
+from src.ai.ro_assistant import ro_engine
+from src.ai.model_router import router
 
 
 def main():
@@ -17,8 +17,8 @@ def main():
     print(router.route_task("coding", task))
     print()
     
-    # Rox AI provides the final user feedback
-    print(f"[ROX AI]: {rox_engine.get_status_update()}")
+    # RO AI provides the final user feedback
+    print(f"[RO AI]: {ro_engine.get_status_update()}")
     print()
 
 
