@@ -1,221 +1,226 @@
-# BrowserAi
+# 🔍 BrowserAi
 
-[![Tests](https://github.com/ramirezrolando222222-eng/BrowserAi/actions/workflows/tests.yml/badge.svg)](https://github.com/ramirezrolando222222-eng/BrowserAi/actions/workflows/tests.yml)
-[![Deploy](https://github.com/ramirezrolando222222-eng/BrowserAi/actions/workflows/deploy.yml/badge.svg)](https://github.com/ramirezrolando222222-eng/BrowserAi/actions/workflows/deploy.yml)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-
-An AI-powered security-focused Internet search engine designed to provide safe, intelligent, and contextual web search results.
-
-## Overview
-
-BrowserAi combines artificial intelligence with security best practices to deliver a modern search experience that prioritizes user safety and data privacy. Whether you're conducting research, investigating threats, or exploring information, BrowserAi provides intelligent filtering and secure browsing capabilities.
+An AI-powered security internet search engine that combines intelligent search capabilities with multi-model AI routing for enhanced security analysis and threat detection.
 
 ## Features
 
-- 🤖 **AI-Powered Search** - Intelligent search algorithms that understand context and intent
-- 🔒 **Security-First Design** - Built with security and privacy at its core
-- 🛡️ **Threat Detection** - Advanced threat and malware detection mechanisms
-- 🔍 **Smart Filtering** - Automatic filtering of suspicious or unsafe content
-- ⚡ **Fast Performance** - Optimized search indexing and retrieval
-- 🌐 **Global Coverage** - Comprehensive web indexing across multiple regions
-- 🐳 **Containerized** - Ready-to-deploy Docker support
-- 🔄 **CI/CD** - Automated testing and deployment
+- 🔒 **Security Focused**: AI-powered threat detection and vulnerability analysis
+- 🤖 **Multi-Model AI**: Intelligent routing between specialized AI models
+- 🔍 **Advanced Search**: Context-aware search with security filters
+- 📊 **Threat Analysis**: Real-time security threat identification
+- 🛡️ **Vulnerability Scanning**: Automated vulnerability detection
+- ⚡ **Fast Processing**: Optimized for quick threat response
+- 🌐 **Web Integration**: Browser-based security monitoring
 
-## Quick Start
+## Architecture
 
-### Requirements
-- Python 3.8+
-- Docker (optional)
+### Core Components
 
-### Local Installation
+1. **ROX Assistant**: AI-powered assistant for intelligent task processing
+2. **Model Router**: Dynamically routes tasks to optimal AI models
+3. **Security Engine**: Analyzes threats and vulnerabilities
+4. **Search Module**: Contextual security-focused search
+
+## Technology Stack
+
+- **Language**: Python 3.8+
+- **AI Models**: GPT-4, GPT-4-Code, GPT-4-Analysis
+- **Architecture**: Modular multi-model system
+
+## Installation
+
+### Prerequisites
+- Python 3.8 or higher
+- pip package manager
+- API keys for AI services (optional for development)
+
+### Setup
 
 ```bash
 # Clone the repository
 git clone https://github.com/ramirezrolando222222-eng/BrowserAi.git
 cd BrowserAi
 
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-
 # Install dependencies
 pip install -r requirements.txt
+
+# Configure environment
+cp .env.example .env
+# Edit .env with your API keys
 
 # Run the application
 python main.py
 ```
 
-### Docker
-
-```bash
-# Build image
-docker build -t browserai .
-
-# Run container
-docker run -p 5000:5000 browserai
-
-# Or use Docker Compose
-docker-compose up -d
-```
-
-## Usage
-
-### Command Line
-
-```bash
-python browserai.py --search "your query" --secure
-```
-
-### Web Interface
-
-Navigate to `http://localhost:5000` and enter your search query.
-
-## Configuration
-
-Create a `.env` file:
-
-```env
-SEARCH_MODE=secure
-AI_MODEL=default
-THREAT_DETECTION=enabled
-LOG_LEVEL=info
-ROMUX_BRIDGE_ENABLED=true
-```
-
-See `.env.example` for all options.
-
 ## Project Structure
 
 ```
 BrowserAi/
-├── src/
-│   ├── hud.py              # Visual overlay
-│   ├── romux_bridge.py     # Kernel bridge
-│   ├── sdk_scanner.py      # File verification
-│   ├── security/           # Security modules
-│   ├── ai/                 # AI components
-│   ├── search/             # Search functionality
-│   └── utils/              # Utilities
-├── tests/                  # Unit tests
-├── .github/
-│   ├── workflows/          # GitHub Actions
-│   └── ISSUE_TEMPLATE/     # Issue templates
-├── main.py                 # Entry point
-├── Dockerfile              # Container config
-├── docker-compose.yml      # Compose config
-├── requirements.txt        # Dependencies
-├── .env.example           # Config template
-├── README.md              # This file
-├── SETUP.md               # Setup guide
-├── DEPLOYMENT.md          # Deployment guide
-└── CONTRIBUTING.md        # Contribution guidelines
+├── README.md
+├── LICENSE
+├── requirements.txt
+├── main.py
+├── .gitignore
+└── src/
+    ├── __init__.py
+    └── ai/
+        ├── __init__.py
+        ├── rox_assistant.py      # ROX AI Assistant
+        ├── model_router.py       # Intelligent task routing
+        └── security_engine.py    # Security analysis
 ```
 
-## Testing
+## Usage
+
+### Basic Usage
+
+```python
+from src.ai.rox_assistant import rox_engine
+from src.ai.model_router import router
+
+# Route a coding task
+result = router.route_task("coding", "Optimize memory allocation")
+print(result)
+
+# Get AI status
+status = rox_engine.get_status_update()
+print(status)
+```
+
+### Command Line
 
 ```bash
-# Run all tests
-pytest tests/ -v
+# Run the main application
+python main.py
 
-# Run with coverage
-pytest tests/ --cov=src --cov-report=html
-
-# Run specific test
-pytest tests/test_romux_bridge.py -v
+# The application will:
+# 1. Initialize ROX AI Assistant
+# 2. Route tasks to appropriate models
+# 3. Process security analysis
+# 4. Return results
 ```
 
-## Deployment
+## API Reference
 
-See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions including:
-- Local development
-- Docker deployment
-- Cloud platforms (Heroku, AWS, Google Cloud, Azure)
-- Kubernetes
-- CI/CD pipeline
+### ROX Assistant
 
-Quick deploy to Heroku:
+```python
+# Get status update
+rox_engine.get_status_update()
+
+# Process a task
+rox_engine.process_task("task description")
+
+# Get recommendations
+rox_engine.get_recommendations("context")
+```
+
+### Model Router
+
+```python
+# Route a task
+router.route_task("coding", "task description")
+
+# Get optimal model
+router.get_optimal_model("coding")
+
+# Add custom model
+router.add_model("custom_type", "custom-model-id")
+
+# View routing history
+router.get_routing_history(limit=10)
+```
+
+## Task Types
+
+The Model Router supports the following task types:
+
+- **coding**: Code analysis and optimization tasks
+- **analysis**: Data analysis and report generation
+- **creative**: Creative content generation
+- **general**: General purpose tasks
+- **security**: Security analysis and threat detection
+
+## Configuration
+
+Create a `.env` file for configuration:
+
+```env
+AI_MODEL=gpt-4
+API_KEY=your_api_key_here
+LOG_LEVEL=INFO
+DEBUG=false
+```
+
+## Examples
+
+### Example 1: Security Analysis
+
+```python
+from src.ai.model_router import router
+
+task_description = "Analyze potential SQL injection vulnerabilities"
+result = router.route_task("security", task_description)
+print(result)
+```
+
+### Example 2: Code Optimization
+
+```python
+from src.ai.model_router import router
+
+task_description = "Optimize Romux 5 Kernel memory allocation"
+result = router.route_task("coding", task_description)
+print(result)
+```
+
+## Development
+
+### Running Tests
+
 ```bash
-heroku create browserai-app
-git push heroku main
+pytest tests/
 ```
 
-## API Documentation
+### Code Style
 
-### Endpoints
-
-- `GET /` - Home page
-- `POST /search` - Execute search
-- `GET /health` - Health check
-- `GET /status` - System status
-
-See full API docs in the web interface.
-
-## Security
-
-- ✅ All searches scanned for threats
-- ✅ User data never stored or tracked
-- ✅ HTTPS encryption enforced
-- ✅ Regular security audits
-- ✅ Automated dependency scanning
-- ✅ OWASP compliance
+```bash
+black src/
+flake8 src/
+```
 
 ## Contributing
 
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-### Quick Contribution Steps
-
 1. Fork the repository
-2. Create feature branch: `git checkout -b feature/amazing-feature`
-3. Commit changes: `git commit -m 'Add amazing feature'`
-4. Push to branch: `git push origin feature/amazing-feature`
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
 ## Roadmap
 
-- [ ] Advanced AI model integration
-- [ ] Multi-language support
-- [ ] Mobile app development
-- [ ] API for third-party integration
-- [ ] Enhanced threat intelligence feeds
-- [ ] Real-time search collaboration
-- [ ] Browser extension
-
-## Support
-
-- **Issues**: [GitHub Issues](https://github.com/ramirezrolando222222-eng/BrowserAi/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/ramirezrolando222222-eng/BrowserAi/discussions)
-- **Documentation**: [Setup Guide](SETUP.md) | [Deployment Guide](DEPLOYMENT.md)
+- [ ] Real-time threat monitoring
+- [ ] Custom security rule engine
+- [ ] Integration with external threat databases
+- [ ] Web UI dashboard
+- [ ] Mobile application
+- [ ] Advanced ML models
+- [ ] API service
 
 ## License
 
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
 
-## Changelog
+## Support
 
-### v1.0.0 (June 2026)
-- Initial release
-- Core security modules
-- Romux 5 integration
-- Commander HUD interface
-- Full test coverage
-- Docker support
-- CI/CD workflows
+For issues, questions, and feature requests, please visit the [GitHub Issues](https://github.com/ramirezrolando222222-eng/BrowserAi/issues) page.
 
-## Authors
+## Contact
 
-**Rolando Ramirez** - [@ramirezrolando222222-eng](https://github.com/ramirezrolando222222-eng)
-
-## Acknowledgments
-
-- Thanks to all contributors
-- Inspired by modern security practices
-- Built with cutting-edge AI technologies
+- Author: ramirezrolando222222-eng
+- Email: (add your email)
+- GitHub: [@ramirezrolando222222-eng](https://github.com/ramirezrolando222222-eng)
 
 ---
 
-**Status**: Active Development | **Last Updated**: June 2026
-
-[⬆ back to top](#browserai)
+**⭐ If you find this project helpful, please consider giving it a star!**
