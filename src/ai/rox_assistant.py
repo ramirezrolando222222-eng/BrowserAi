@@ -1,55 +1,64 @@
 """
-Rox AI Assistant Module
-Provides security analysis and user interaction for the Motherland Nexus
+ROX Assistant Module
+Provides AI-powered assistance and status updates for the BrowserAi system
 """
 
 
 class RoxAssistant:
     """
-    Rox AI: The integrated assistant for Browserx AI.
-    Provides security analysis and user interaction for the Motherland Nexus.
+    ROX AI Assistant - Handles AI-powered user interactions and feedback
     """
     
-    def __init__(self):
-        """Initialize the Rox AI Assistant"""
-        self.name = "Rox"
-        print(f"[AI] {self.name} Assistant initialized.")
-
-    def analyze_threat(self, threat_data):
+    def __init__(self, name: str = "ROX", model: str = "default"):
         """
-        Processes logs from the Romux Bridge and returns natural 
-        language guidance for the Commander HUD.
+        Initialize ROX Assistant
         
         Args:
-            threat_data: Security threat information to analyze
-            
-        Returns:
-            str: Natural language security advice
+            name: Assistant name (default: "ROX")
+            model: AI model to use (default: "default")
         """
-        advice = (f"Rox here: I detected a {threat_data}. "
-                  "I've initiated an emergency block on the connection "
-                  "to maintain kernel integrity.")
-        return advice
-
-    def get_status_update(self):
+        self.name = name
+        self.model = model
+        self.status = "online"
+    
+    def get_status_update(self) -> str:
         """
-        Returns the current operational status of the security grid.
+        Get the current status update from ROX AI
         
         Returns:
-            str: Status update message
+            str: Status message
         """
-        return f"{self.name} is currently monitoring the Motherland Nexus grid."
-
-
-# Instantiate Rox for global access within the browser
-rox_engine = RoxAssistant()
-
-
-# Example usage
-if __name__ == "__main__":
-    # Initialize Rox AI Assistant
-    print(rox_engine.get_status_update())
+        return f"{self.name} AI: System operational - Ready to assist with development tasks"
     
-    # Simulate threat analysis
-    threat_message = rox_engine.analyze_threat("malicious script injection")
-    print(threat_message)
+    def process_task(self, task: str) -> str:
+        """
+        Process a user task and provide intelligent response
+        
+        Args:
+            task: Task description
+            
+        Returns:
+            str: Processed response
+        """
+        return f"Analyzing task: {task}\nProcessing with {self.model} model..."
+    
+    def get_recommendations(self, context: str) -> list:
+        """
+        Get AI recommendations based on context
+        
+        Args:
+            context: Context for recommendations
+            
+        Returns:
+            list: List of recommendations
+        """
+        return [
+            "Optimize code structure",
+            "Add error handling",
+            "Implement logging",
+            "Add unit tests"
+        ]
+
+
+# Global ROX engine instance
+rox_engine = RoxAssistant(name="ROX", model="gpt-4")
